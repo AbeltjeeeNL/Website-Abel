@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enda's bomb website</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💣</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #58a6ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7c3aed;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .link-item {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 3px solid transparent;
+            padding-left: 15px;
+        }
+
+        .link-item::before {
+            content: '→ ';
+            color: #58a6ff;
+            opacity: 0;
+            transition: all 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .link-item:hover {
+            color: #58a6ff;
+            border-left-color: #58a6ff;
+            padding-left: 20px;
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+        }
+
+        .link-item:hover::before {
+            opacity: 1;
+        }
+
+        .link-item[data-platform="telegram"] {
+            color: #0088cc;
+        }
+
+        .link-item[data-platform="github"] {
+            color: #f0f6fc;
+        }
+
+        .link-item[data-platform="youtube"] {
+            color: #ff0000;
+        }
+
+        .link-item[data-platform="instagram"] {
+            color: #e4405f;
+        }
+
+        .link-item[data-platform="tiktok"] {
+            color: #ff0050;
+        }
+         
+        .link-item[data-platform="oobe"] {
+            color: #212B9B;
+        }
+
+        .link-item[data-platform="telegram"]:hover,
+        .link-item[data-platform="github"]:hover,
+        .link-item[data-platform="youtube"]:hover,
+        .link-item[data-platform="instagram"]:hover,
+        .link-item[data-platform="tiktok"]:hover,
+        .link-item[data-platform="oobe"]:hover {
+            border-left-color: currentColor;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .footer {
+            margin-top: 40px;
+            border-top: 1px solid #21262d;
+            padding-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+ 
+        .footer-whoami {
+            font-size: 0.9rem;
+            color: #6e7681;
+        }
+ 
+        .footer-whoami .prompt {
+            color: #3fb950;
+            margin-bottom: 2px;
+        }
+ 
+        .footer-whoami .answer {
+            color: #c9d1d9;
+        }
+ 
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+        }
+ 
+        .footer-link {
+            font-size: 0.85rem;
+            color: #6e7681;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #21262d;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+ 
+        .footer-link:hover {
+            color: #c9d1d9;
+            border-color: #444c56;
+            background-color: #161b22;
+        }
+ 
+ 
+ 
+        .footer-bottom {
+            font-size: 0.75rem;
+            color: #6e7681;
+            opacity: 0.5;
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #58a6ff;
+            width: 3px;
+            height: 1.2em;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+            
+            .link-item {
+                font-size: 1rem;
+            }
+        }
+
+        .bracket-link {
+            color: #6e7681;
+        }
+
+        .bracket-link:before {
+            content: '[';
+            color: #6e7681;
+        }
+
+        .bracket-link:after {
+            content: ']';
+            color: #6e7681;
+        }
+
+        .bracket-link:hover {
+            color: #58a6ff;
+        }
+
+        .bracket-link:hover:before,
+        .bracket-link:hover:after {
+            color: #58a6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="name">Enda Dwagon<span class="cursor"></span></h1>
+        <p class="subtitle">Absolute bomb</p>
+        
+        <div class="links">
+            <a href="https://t.me/endaromchat" class="link-item bracket-link" data-platform="telegram" target="_blank">EndaROM Chat</a>
+            <a href="https://t.me/endarom" class="link-item bracket-link" data-platform="telegram" target="_blank">EndaROM Updates</a>
+            <a href="https://github.com/ExtremeXT/ExtremeROM" class="link-item bracket-link" data-platform="youtube" target="_blank">ExtremeROM</a>
+            <a href="https://github.com/EndaDwagon" class="link-item bracket-link" data-platform="github" target="_blank">GitHub</a>
+            <a href="https://youtube.com/@endadwagon" class="link-item bracket-link" data-platform="youtube" target="_blank">YouTube</a>
+            <a href="https://instagram.com/endadwagon" class="link-item bracket-link" data-platform="instagram" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@endadwagon" class="link-item bracket-link" data-platform="tiktok" target="_blank">TikTok</a>
+            <a href="https://immich.endadwagon.xyz/s/wallpapers" class="link-item bracket-link" data-platform="github" target="_blank">Phone Wallpaper Collection</a>
+            <a href="https://endadwagon.xyz/FirstLogonAnim" class="link-item bracket-link" data-platform="oobe" target="_blank">Win11 OOBE Animation</a>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-whoami">
+                <p class="prompt">$ whoami</p>
+                <p class="answer">AN ALCOHOLIC 🔥🔥🔥🔥</p>
+            </div>
+ 
+            <div class="footer-links">
+                <a href="https://endadwagon.xyz/lost-devices" class="footer-link" target="_blank">Found a lost device?</a>
+                <a href="https://github.com/endadwagon/endadwagon.xyz" class="footer-link" target="_blank">Page source (Github)</a>
+            </div>
+ 
+            <p class="footer-bottom">Site hosted on Github pages, shoutout to them :)</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.link-item');
+            
+            links.forEach((link, index) => {
+                link.style.opacity = '0';
+                link.style.transform = 'translateX(-20px)';
+                
+                setTimeout(() => {
+                    link.style.transition = 'all 0.5s ease';
+                    link.style.opacity = '1';
+                    link.style.transform = 'translateX(0)';
+                }, index * 100 + 500);
+            });
+ 
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    console.log('> get out u bomb');
+                }
+            });
+        });
+ 
+        document.querySelectorAll('.link-item').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log(`> Navigating to ${this.textContent}...`);
+            });
+        });
+    </script>
+</body>
+</html>
