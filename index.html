@@ -282,11 +282,26 @@
                 }, index * 100 + 500);
             });
  
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    console.log('> Blud zit in de console🥀');
-                }
-            });
+            let typed = '';
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Backspace') {
+        typed = '';
+        return;
+    }
+
+    if (e.key.length === 1) {
+        typed += e.key.toLowerCase();
+
+        if (typed === 'hoi') {
+            window.location.href = 'https://www.google.com';
+        }
+
+        if (typed.length > 3) {
+            typed = typed.slice(-3);
+        }
+    }
+});
         });
  
         document.querySelectorAll('.link-item').forEach(link => {
