@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found a Device?</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #58a6ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7c3aed;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .section {
+            margin-bottom: 28px;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            color: #3fb950;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .section-label::before {
+            content: '// ';
+            color: #6e7681;
+        }
+
+        .section-body {
+            font-size: 1rem;
+            color: #c9d1d9;
+            padding-left: 15px;
+            border-left: 3px solid #21262d;
+        }
+
+        .section-body p + p {
+            margin-top: 8px;
+        }
+
+        .highlight {
+            color: #58a6ff;
+        }
+
+        .email-block {
+            margin: 32px 0;
+            padding: 16px 20px;
+            border: 1px solid #21262d;
+            border-radius: 6px;
+            background-color: #161b22;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .email-label {
+            font-size: 0.75rem;
+            color: #6e7681;
+            margin-bottom: 6px;
+        }
+
+        .email-label::before {
+            content: '$ ';
+            color: #3fb950;
+        }
+
+        .email-address {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #58a6ff;
+            text-decoration: none;
+            text-shadow: 0 0 14px rgba(88, 166, 255, 0.25);
+            transition: text-shadow 0.3s ease;
+        }
+
+        .email-address:hover {
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.6);
+        }
+
+        .email-hint {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .email-hint li {
+            list-style: none;
+            font-size: 0.85rem;
+            color: #6e7681;
+        }
+
+        .email-hint li::before {
+            content: '— ';
+            color: #444c56;
+        }
+
+        .warn-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .warn-item {
+            padding: 12px 16px;
+            border: 1px solid #21262d;
+            border-left: 3px solid #444c56;
+            border-radius: 4px;
+            background-color: #161b22;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+
+        .warn-item .warn-title {
+            color: #c9d1d9;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .back {
+            margin-top: 40px;
+            border-top: 1px solid #21262d;
+            padding-top: 20px;
+            opacity: 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back a {
+            font-size: 0.9rem;
+            color: #6e7681;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back a::before {
+            content: '← ';
+            color: #58a6ff;
+        }
+
+        .back a:hover {
+            color: #c9d1d9;
+        }
+
+       .thanks {
+            font-size: 0.9rem;
+            color: #6e7681;
+            opacity: 0.8;
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #58a6ff;
+            width: 3px;
+            height: 1.2em;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .name { font-size: 2rem; }
+            .container { padding: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="name">Found a device?<span class="cursor"></span></h1>
+        <p class="subtitle">What to do if you found an EndaDwagon owned device</p>
+
+        <div class="section" id="s1">
+            <p class="section-label">how to return it</p>
+            <div class="section-body">
+                <p>If you've found a device that belongs to us, get in touch using the email below. I'll verify the details and arrange a return as soon as possible.</p>
+                <p>Including the asset number helps us verify the device faster, so please include that in your email.</p>
+            </div>
+        </div>
+
+        <div class="email-block" id="email">
+            <p class="email-label">contact</p>
+            <a href="#" class="email-address" id="mailto-link">lost [at] endadwagon.xyz</a>
+            <p class="email-label" style="margin-top:14px">In your email include:</p>
+            <ul class="email-hint">
+                <li>The asset number from the device (see below for where to find it)</li>
+                <li>A description of the device (e.g. black laptop, silver phone)</li>
+                <li>Where you found it</li>
+            </ul>
+        </div>
+
+        <div class="section" id="s2">
+            <p class="section-label">finding the asset number</p>
+            <div class="section-body">
+                <p>Every device has a unique random 4-digit number — something like <span class="highlight">2947</span>. It's used to verify your request, and identify the device.</p>
+                <p><span class="highlight">Laptops</span> — Printed on a sticker located on the bottom of the laptop and may also be written directly on it.</p>
+                <p><span class="highlight">Phones & tablets</span> — Located on a sticker on the back of the device and in the Medical ID page of the device.</p>
+            </div>
+        </div>
+
+        <div class="warn-grid" id="warns">
+            <div class="warn-item">
+                <p class="warn-title">Full disk encryption</p>
+                <p>All devices are fully encrypted. Without the decryption key the data on them is completely inaccessible.</p>
+            </div>
+            <div class="warn-item">
+                <p class="warn-title">BIOS password locked</p>
+                <p>A bios-level password is set on all devices. They cannot be booted into an alternate OS or wiped without it.</p>
+            </div>
+            <div class="warn-item">
+                <p class="warn-title">Tamper protection (laptops)</p>
+                <p>Laptops detect if they've been physically opened. If tampered with, they will not boot or perform any action without the admin password.</p>
+            </div>
+            <div class="warn-item">
+                <p class="warn-title">Remote lock and wipe</p>
+                <p>Devices will be remotely locked or wiped at any time. If a device is reported lost this happens automatically.</p>
+            </div>
+           <div class="warn-item">
+                <p class="warn-title">Heavy protection</p>
+                <p>These protections are in place to keep sensitive data on these devices safe. Returning the device is the only way it can be reused.</p>
+            </div>
+           <div class="warn-item">
+                <p class="warn-title">Will you pay me or??</p>
+                <p>If you can successfully return the device that is lost, a reward may be offered.</p>
+            </div>
+           <div class="warn-item">
+                <p class="warn-title">What is this page?</p>
+                <p>My devices have stickers on them linking to this page with a number. If one gets lost, this helps whoever finds it return it.</p>
+            </div>
+        </div>
+
+        <div class="back" id="back">
+            <a href="https://endadwagon.xyz">endadwagon.xyz</a>
+            <span class="thanks">thanks for helping out :)</span>
+        </div>
+    </div>
+
+    <script>
+        const u = 'lost';
+        const d = 'endadwagon.xyz';
+        const link = document.getElementById('mailto-link');
+        link.href = 'mailto:' + u + '@' + d;
+        link.textContent = u + '@' + d;
+
+        const items = [
+            { id: 's1',    delay: 300 },
+            { id: 'email', delay: 450 },
+            { id: 's2',    delay: 600 },
+            { id: 'warns', delay: 750 },
+            { id: 'back',  delay: 900 },
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            items.forEach(({ id, delay }) => {
+                const el = document.getElementById(id);
+                setTimeout(() => {
+                    el.style.transition = 'all 0.5s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateX(0)';
+                }, delay);
+            });
+        });
+    </script>
+</body>
+</html>
