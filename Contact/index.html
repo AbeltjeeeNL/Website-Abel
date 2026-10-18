@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactformulier</title>
+    <title>Contact</title>
     <style>
         * {
             box-sizing: border-box;
@@ -83,29 +83,29 @@
 <body>
 
     <div class="form-container">
-        <h2>Neem contact op</h2>
+        <h2>Contact</h2>
         
         <!-- Vervang "JOUW-ACCESS-KEY-HIER" door je eigen sleutel van web3forms.com -->
         <form action="https://api.web3forms.com/submit" method="POST">
             
-            <input type="hidden" name="access_key" value="JOUW-ACCESS-KEY-HIER">
+            <input type="hidden" name="access_key" value="a87f3a23-f960-47b9-8f26-537572ff7035">
 
             <div class="form-group">
-                <label for="naam">Naam</label>
+                <label for="naam">Naam (Name)</label>
                 <input type="text" id="naam" name="name" placeholder="Je naam" required>
             </div>
 
             <div class="form-group">
-                <label for="email">E-mailadres</label>
+                <label for="email">E-Mail (E-Mail)</label>
                 <input type="email" id="email" name="email" placeholder="naam@voorbeeld.nl" required>
             </div>
 
             <div class="form-group">
-                <label for="bericht">Bericht</label>
+                <label for="bericht">Bericht (Message)</label>
                 <textarea id="bericht" name="message" rows="5" placeholder="Typ hier je bericht..." required></textarea>
             </div>
 
-            <button type="submit">Versturen</button>
+            <button type="submit">Versturen (Send)</button>
 
         </form>
     </div>
