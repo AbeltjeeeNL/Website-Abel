@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>/home/abel</title>
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
         
@@ -252,7 +253,15 @@
             <a href="" class="link-item bracket-link" data-platform="github" target="_blank">Phone Wallpaper Collection</a>
             <a href="" class="link-item bracket-link" data-platform="oobe" target="_blank">Win11 OOBE Animation</a>
         </div>
-
+        
+        <form action="verwerk.php" method="POST" style="margin: 30px 0;">
+        <textarea name="bericht" placeholder="Typ hier je bericht..." required style="width: 100%; max-width: 400px; padding: 10px; margin-bottom: 15px;"></textarea>
+        
+        <div class="g-recaptcha" data-sitekey="6Lcd2hYuAAAAAEF7kEPPp_rkNtEKtshoooBAsHVA"></div>
+        
+        <button type="submit" style="margin-top: 15px; padding: 8px 15px;">Verzenden</button>
+        </form>
+        
         <footer class="footer">
             <div class="footer-whoami">
                 <p class="prompt">$ whoami</p>
