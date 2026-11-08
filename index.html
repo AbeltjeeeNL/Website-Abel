@@ -66,7 +66,7 @@
         <p>Bevestig dat je geen robot bent</p>
         
         <div class="captcha-container">
-            <!-- Google reCAPTCHA vinkje -->
+            
             <div class="g-recaptcha" data-sitekey="6Lcd2hYuAAAAAEF7kEPPp_rkNtEKtshoooBAsHVA" data-theme="dark" data-callback="enableButton"></div>
         </div>
         
@@ -74,15 +74,17 @@
     </div>
 
     <script>
-        // Deze functie activeert de knop als de captcha is aangevinkt
+        
         function enableButton() {
             document.getElementById("submitBtn").disabled = false;
         }
 
-        // Deze functie stuurt de bezoeker door naar je hoofdpagina
+        
         function goToHome() {
-            window.location.href = "home.html";
+    sessionStorage.setItem("geverifieerd", "true"); // Onthoud dat de captcha is gehaald
+    window.location.href = "home.html";
         }
+        
     </script>
 
 </body>
