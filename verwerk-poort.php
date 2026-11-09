@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($result && $result->success == true) {
         
-        header("Location: home.html");
+        header("Location: home");
         exit;
     } else {
         echo "Verificatie mislukt. <a href='index.html'>Probeer het opnieuw</a>";
