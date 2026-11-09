@@ -80,9 +80,14 @@
         }
 
         
+        function enableButton() {
+            document.getElementById("submitBtn").disabled = false;
+        }
+
+
         function goToHome() {
-    sessionStorage.setItem("geverifieerd", "true"); 
-    window.location.href = "home";
+            sessionStorage.setItem("geverifieerd", "true"); 
+            window.location.href = "home.html"; 
         }
         
     </script>
