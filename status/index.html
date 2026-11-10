@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status – abeltjeee.nl</title>
+<style>
+:root{
+  --bg:#eef2f6; --surface:#ffffff; --ink:#14212e; --muted:#5b6b7b; --line:#d5dde6;
+  --ok:#14804a; --ok-bg:#dff3e8; --bad:#b42318; --bad-bg:#fbe0dd; --wait:#6b7a8a;
+  --accent:#14212e; --accent-ink:#ffffff; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0f1720; --surface:#17222d; --ink:#e8eef4; --muted:#93a3b3; --line:#2a3846;
+    --ok:#4cc38a; --ok-bg:#12372a; --bad:#ff8a7e; --bad-bg:#431c19; --wait:#93a3b3;
+    --accent:#e8eef4; --accent-ink:#0f1720; color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{height:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);
+  font:16px/1.55 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.wrap{max-width:560px;margin:0 auto;padding:28px 20px 56px}
+.back{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+  background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;font-size:15px}
+.back:hover{opacity:.88}
+.back:focus-visible{outline:3px solid var(--ok);outline-offset:3px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.2rem,8vw,3.2rem);
+  line-height:1.05;margin:44px 0 28px;letter-spacing:-.02em}
+.list{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.name{font-weight:600;font-size:1.1rem}
+.pill{display:inline-flex;align-items:center;gap:8px;font-weight:700;padding:6px 14px;border-radius:999px;
+  background:var(--line);color:var(--wait)}
+.pill::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}
+.pill.bad{background:var(--bad-bg);color:var(--bad)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="https://abeltjeee.nl/home">← Terug</a>
+  <h1>abeltjeee.nl</h1>
+  <div class="list" role="status" aria-live="polite">
+    <div class="row"><span class="name">Domein</span><span class="pill" id="domain">Checking…</span></div>
+    <div class="row"><span class="name">Email</span><span class="pill" id="email">Checking…</span></div>
+  </div>
+</div>
+<script>
+const DOMAIN = "abeltjeee.nl";
+const DOH = "https://cloudflare-dns.com/dns-query";
+
+function show(id, online){
+  const el = document.getElementById(id);
+  el.textContent = online ? "Online" : "Offline";
+  el.className = "pill " + (online ? "ok" : "bad");
+}
+async function dns(type){
+  const r = await fetch(`${DOH}?name=${DOMAIN}&type=${type}`, { headers:{ accept:"application/dns-json" }, cache:"no-store" });
+  return r.json();
+}
+async function checkDomain(){
+  try{
+    const ctl = new AbortController();
+    setTimeout(() => ctl.abort(), 8000);
+    await fetch("https://" + DOMAIN + "/", { mode:"no-cors", cache:"no-store", signal:ctl.signal });
+    show("domain", true);
+  }catch(e){ show("domain", false); }
+}
+async function checkEmail(){
+  try{
+    const d = await dns("MX");
+    show("email", (d.Answer || []).some(a => a.type === 15));
+  }catch(e){ show("email", false); }
+}
+function run(){ checkDomain(); checkEmail(); }
+run();
+setInterval(run, 60000);
+</script>
+</body>
+</html>
