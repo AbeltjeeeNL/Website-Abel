@@ -86,7 +86,7 @@ async function checkDomain(){
   try{
     const ctl = new AbortController();
     setTimeout(() => ctl.abort(), 8000);
-    await fetch("https://" + DOMAIN + "/", { mode:"no-cors", cache:"no-store", signal:ctl.signal });
+    await fetch("https://abeltjeee.nl" + DOMAIN + "/", { mode:"no-cors", cache:"no-store", signal:ctl.signal });
     show("domain", true);
   }catch(e){ show("domain", false); }
 }
