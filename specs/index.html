@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mijn pc</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --panel:#121827; --line:#222b40; --text:#e8ecf5; --muted:#8c97b2; --accent:#7aa7ff;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;
+    background:#0b0f19;
+    color:var(--text);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:56px 20px 72px}
+  h1{font-size:clamp(2.2rem,6vw,3.6rem);margin:0 0 8px;letter-spacing:-.02em}
+  .intro{color:var(--muted);margin:0 0 40px;max-width:55ch}
+  h2{font-size:1.1rem;color:var(--accent);margin:40px 0 12px}
+  .specs{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0}
+  .spec{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 20px;border-top:1px solid var(--line)}
+  .spec:first-child{border-top:0}
+  .spec dt{color:var(--muted)}
+  .spec dd{margin:0;font-weight:600}
+  .knop-wrap{margin-top:48px;text-align:center}
+  .knop{
+    display:inline-block;padding:14px 28px;border-radius:10px;
+    background:var(--accent);color:#0b0f19;font-weight:700;text-decoration:none;
+  }
+  .knop:hover{filter:brightness(1.1)}
+  .knop:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+  @media (max-width:560px){.spec{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== STAP 1: pas hier de titel en intro aan ===== -->
+  <h1>Mijn pc</h1>
+  <p class="intro">Dit zijn de specs van mijn pc.</p>
+
+
+  <!-- ===== STAP 2: vervang de tekst tussen <dd> en </dd> door jouw specs ===== -->
+  <h2>Hoofdonderdelen</h2>
+  <dl class="specs">
+    <div class="spec"><dt>Processor</dt><dd>Typ hier je processor</dd></div>
+    <div class="spec"><dt>Videokaart</dt><dd>Typ hier je videokaart</dd></div>
+    <div class="spec"><dt>Werkgeheugen</dt><dd>Typ hier je RAM</dd></div>
+    <div class="spec"><dt>Opslag</dt><dd>Typ hier je opslag</dd></div>
+    <div class="spec"><dt>Moederbord</dt><dd>Typ hier je moederbord</dd></div>
+  </dl>
+
+  <h2>Rest van de pc</h2>
+  <dl class="specs">
+    <div class="spec"><dt>Voeding</dt><dd>Typ hier je voeding</dd></div>
+    <div class="spec"><dt>Koeling</dt><dd>Typ hier je koeling</dd></div>
+    <div class="spec"><dt>Behuizing</dt><dd>Typ hier je behuizing</dd></div>
+    <div class="spec"><dt>Besturingssysteem</dt><dd>Typ hier je besturingssysteem</dd></div>
+  </dl>
+
+  <!-- Extra regel nodig? Kopieer deze hele regel en plak hem in een van de lijsten hierboven:
+  <div class="spec"><dt>Naam</dt><dd>Waarde</dd></div>
+  -->
+
+  <!-- ===== Knop onderaan: pas de tekst of de link hier aan ===== -->
+  <div class="knop-wrap">
+    <a class="knop" href="https://abeltjeee.nl/home">Naar Abeltjeee</a>
+  </div>
+
+</div>
+</body>
+</html>
