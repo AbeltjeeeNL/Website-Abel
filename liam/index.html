@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <title>/home/abel/liam</title>
 <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ«©</text></svg>">
+<script>
+    if (sessionStorage.getItem("geverifieerd") !== "true") {
+        window.location.replace("..");
+    }
+</script>
 <style>
   body { font-family: Arial, sans-serif; font-size: 13px; background: #c0c0c0; margin: 0; }
   a { color: #00008b; }
@@ -61,7 +66,7 @@
     <div id="content">
 
             <div class="post">
-        <div class="post-title">Website gemaakt op een avond &mdash; 11/05/2026 @ 19:37</div>
+        <div class="post-title">Pagina gemaakt op een avond &mdash; 11/05/2026 @ 19:37</div>
       </div>
 
       <p><b>$ whoami</b></p>
