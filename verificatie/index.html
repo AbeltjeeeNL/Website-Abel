@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/home/abel/verificatie</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #0b0f19;
+            color: #58a6ff;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        h2 { margin-bottom: 10px; color: #ffffff; font-size: 1.4rem; }
+        p { margin-bottom: 20px; font-size: 0.9rem; color: #8b949e; }
+
+        .captcha-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #238636;
+            color: #ffffff;
+            border: 1px solid rgba(240,246,252,0.1);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        button:disabled {
+            background: #21262d;
+            color: #484f58;
+            cursor: not-allowed;
+            border-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Verificatie</h2>
+        <p>Bevestig dat je geen robot bent</p>
+        
+        <div class="captcha-container">
+            
+            <div class="g-recaptcha" data-sitekey="6Lcd2hYuAAAAAEF7kEPPp_rkNtEKtshoooBAsHVA" data-theme="dark" data-callback="enableButton"></div>
+        </div>
+        
+        <button id="submitBtn" onclick="goToHome()" disabled>Verifiëren</button>
+    </div>
+
+    <script>
+        
+        function enableButton() {
+            document.getElementById("submitBtn").disabled = false;
+        }
+
+        
+        function enableButton() {
+            document.getElementById("submitBtn").disabled = false;
+        }
+
+
+        function goToHome() {
+            sessionStorage.setItem("geverifieerd", "true"); 
+            window.location.href = "home"; 
+        }
+        
+    </script>
+
+</body>
+</html>
