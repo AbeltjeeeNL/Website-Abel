@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyan is skeer en heeft geen geld</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #da291c 0%, #8a140c 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: #ffc72c;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .main-card {
+            background-color: #ffffff;
+            color: #292929;
+            width: 100%;
+            max-width: 700px;
+            padding: 45px 35px;
+            border-radius: 24px;
+            border: 6px solid #ffc72c;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .main-card p {
+            font-size: clamp(1.4rem, 3vw, 2.1rem);
+            font-weight: 800;
+            line-height: 1.4;
+            color: #1f1f1f;
+        }
+
+        /* 3D Hamburger Ruimte */
+        .burger-stage {
+            width: 240px;
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 900px;
+        }
+
+        /* De draaiende 3D-burger */
+        .burger-3d {
+            width: 190px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform-style: preserve-3d;
+            animation: spinBurger 4s linear infinite;
+            filter: drop-shadow(0 18px 14px rgba(0, 0, 0, 0.28));
+        }
+
+        @keyframes spinBurger {
+            0% {
+                transform: rotateX(-12deg) rotateY(0deg) translateY(0px);
+            }
+            50% {
+                transform: rotateX(-12deg) rotateY(180deg) translateY(-10px);
+            }
+            100% {
+                transform: rotateX(-12deg) rotateY(360deg) translateY(0px);
+            }
+        }
+
+        /* Onderdelen van de hamburger */
+        .bun-top {
+            width: 175px;
+            height: 62px;
+            background: radial-gradient(circle at 35% 30%, #f3a847, #c8741d);
+            border-radius: 90px 90px 18px 18px;
+            position: relative;
+            box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.2);
+            z-index: 6;
+        }
+
+        /* Sesamzaadjes */
+        .seed {
+            position: absolute;
+            width: 10px;
+            height: 5px;
+            background: #fff6d6;
+            border-radius: 50%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .s1 { top: 18px; left: 45px; transform: rotate(-20deg); }
+        .s2 { top: 14px; left: 85px; transform: rotate(15deg); }
+        .s3 { top: 22px; left: 122px; transform: rotate(-10deg); }
+        .s4 { top: 34px; left: 32px; transform: rotate(25deg); }
+        .s5 { top: 32px; left: 70px; transform: rotate(-15deg); }
+        .s6 { top: 35px; left: 108px; transform: rotate(20deg); }
+        .s7 { top: 44px; left: 52px; transform: rotate(10deg); }
+        .s8 { top: 43px; left: 130px; transform: rotate(-25deg); }
+
+        .lettuce {
+            width: 192px;
+            height: 16px;
+            background: linear-gradient(90deg, #43a047, #66bb6a, #388e3c);
+            border-radius: 20px;
+            margin-top: -4px;
+            z-index: 5;
+            box-shadow: 0 3px 4px rgba(0,0,0,0.15);
+        }
+
+        .tomato {
+            width: 170px;
+            height: 14px;
+            background: linear-gradient(90deg, #c62828, #ef5350, #b71c1c);
+            border-radius: 10px;
+            margin-top: -2px;
+            z-index: 4;
+        }
+
+        .cheese {
+            width: 186px;
+            height: 14px;
+            background: #ffc72c;
+            border-radius: 6px;
+            margin-top: -2px;
+            position: relative;
+            z-index: 3;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Smeltend hoekje kaas */
+        .cheese::after {
+            content: '';
+            position: absolute;
+            left: 35px;
+            top: 8px;
+            width: 0;
+            height: 0;
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+            border-top: 22px solid #ffc72c;
+        }
+
+        .patty {
+            width: 182px;
+            height: 30px;
+            background: radial-gradient(circle at 50% 30%, #6d381a, #3b1c0a);
+            border-radius: 16px;
+            margin-top: -3px;
+            z-index: 2;
+            box-shadow: inset 0 -5px 8px rgba(0,0,0,0.4);
+        }
+
+        .bun-bottom {
+            width: 172px;
+            height: 32px;
+            background: linear-gradient(180deg, #e09132, #b86814);
+            border-radius: 10px 10px 30px 30px;
+            margin-top: -3px;
+            z-index: 1;
+            box-shadow: inset 0 -5px 8px rgba(0,0,0,0.25);
+        }
+
+        .back-btn {
+            font-family: inherit;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #292929;
+            background: #ffc72c;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 36px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #c99a10, 0 10px 18px rgba(0, 0, 0, 0.25);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .back-btn:hover {
+            background: #ffd35a;
+        }
+
+        .back-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #c99a10, 0 4px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #ffc72c;
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kyan is skeer en heeft geen geld</h1>
+    </header>
+
+    <main class="main-card">
+        
+        <div class="burger-stage">
+            <div class="burger-3d">
+                <div class="bun-top">
+                    <span class="seed s1"></span>
+                    <span class="seed s2"></span>
+                    <span class="seed s3"></span>
+                    <span class="seed s4"></span>
+                    <span class="seed s5"></span>
+                    <span class="seed s6"></span>
+                    <span class="seed s7"></span>
+                    <span class="seed s8"></span>
+                </div>
+                <div class="lettuce"></div>
+                <div class="tomato"></div>
+                <div class="cheese"></div>
+                <div class="patty"></div>
+                <div class="bun-bottom"></div>
+            </div>
+        </div>
+
+        <p>"Kyan is skeer en heeft geen geld maar moet wel maccie betalen voor Abel..."</p>
+
+        <button class="back-btn" type="button" onclick="history.back()">Terug (Back)</button>
+    </main>
+
+    <footer>
+        Tikkie is onderweg &bull; Maccie-fonds voor Abel
+    </footer>
+
+</body>
+</html>
