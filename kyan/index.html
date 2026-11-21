@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyan is skeer en heeft geen geld</title>
+    <title>/usr/kyan</title>
+    <script>
+    if (sessionStorage.getItem("geverifieerd") !== "true") {
+        window.location.replace("../verificatie");
+    }
+    </script>
     <style>
         * {
             box-sizing: border-box;
