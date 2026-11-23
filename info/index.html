@@ -6,6 +6,11 @@
 <title>Jouw Naam – tech &amp; speakers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<script>
+    if (sessionStorage.getItem("geverifieerd") !== "true") {
+        window.location.replace("../verificatie");
+    }
+</script>
 <style>
 :root{--bg:#070f24;--surface:#0d1a3a;--line:#1b2d5c;--text:#e6edff;--muted:#8fa3d1;--accent:#5aa0ff;color-scheme:dark;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -39,7 +44,7 @@ footer{padding:48px 0 64px;color:var(--muted);font-size:.85rem}
 <main>
   <div class="hero">
     <div>
-      <h1>Hoi, ik ben Jouw Naam.</h1>
+      <h1>Hoi, ik ben Abel</h1>
       <p class="lead">Ik ben gek op tech en op goede speakers: alles waar techniek en geluid samenkomen.</p>
       <div class="actions">
         <button id="bass" aria-pressed="false">Meer bas</button>
@@ -72,10 +77,10 @@ footer{padding:48px 0 64px;color:var(--muted);font-size:.85rem}
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Wil je praten over tech of speakers? Stuur me een mail op <a href="mailto:jouw@email.nl">jouw@email.nl</a>.</p>
+    <p>Telegram of <a href="mailto:abel@abeltjeee.nl">abel@abeltjeee.nl</a>.</p>
     <button class="back">Terug</button>
   </section>
-  <footer>© 2026 Jouw Naam</footer>
+  <footer>© 2026 AbeltjeeeNL</footer>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
