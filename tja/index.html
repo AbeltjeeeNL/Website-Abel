@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>nigalink.online</title>
-    <link rel="shortcut icon" href="hacker.png" type="image/x-icon">
-    
+    <title>/home/abel/tja</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😂</text></svg>">
     <script defer src="https://analytics.dawg.network/script.js" data-website-id="a50b0873-25db-42a5-b79e-061b0f1ef6b9"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
+    <script>
+    if (sessionStorage.getItem("geverifieerd") !== "true") {
+        window.location.replace("../verificatie");
+    }
+    </script>
     <style>
         body {
             margin: 0;
@@ -45,11 +46,11 @@
     </style>
 </head>
 <body>
-    <img src="hacker.png">
+    <img src="prullenbak.png">
     <div id="clickOverlay">Click anywhere</div>
     <audio id="audio" loop playsinline>
-        <source src="sound.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
+        <source src="geluid.mp3" type="audio/mp3">
+        Uw browser ondersteunt het audio-element niet (Your browser does not support the audio element)
     </audio>
 
     <script>
