@@ -141,7 +141,7 @@ footer{padding:48px 0 64px;color:var(--muted);font-size:.85rem}
   });
   var btn=document.getElementById('bass');
   btn.addEventListener('click',function(){boost=!boost;btn.setAttribute('aria-pressed',boost);btn.textContent=boost?'Minder bas':'Meer bas';if(boost&&!audioOn)toggleSound();});
-  document.querySelectorAll('.back').forEach(function(b){b.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});boost=false;btn.setAttribute('aria-pressed',false);btn.textContent='Meer bas';mx=0;my=0;});});
+  document.querySelectorAll('.back').forEach(function(b){b.addEventListener('click',function(){window.location.href='..';});});
 
   function resize(){
     var w=stage.clientWidth,h=stage.clientHeight;
