@@ -6,6 +6,11 @@
 <title>Jouw Naam – tech &amp; speakers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<script>
+    if (sessionStorage.getItem("geverifieerd") !== "true") {
+        window.location.replace("../verificatie");
+    }
+</script>
 <style>
 :root{--bg:#070f24;--surface:#0d1a3a;--line:#1b2d5c;--text:#e6edff;--muted:#8fa3d1;--accent:#5aa0ff;color-scheme:dark;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
